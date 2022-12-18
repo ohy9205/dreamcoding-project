@@ -11,6 +11,7 @@ export default function Add({ onAdd }) {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     onAdd(text);
+    setText("");
   };
 
   return (
@@ -21,6 +22,7 @@ export default function Add({ onAdd }) {
           type="text"
           placeholder="Add Todo"
           onChange={onChangeTextHandler}
+          value={text}
         />
         <button className={style.btn} type="submit">
           Add

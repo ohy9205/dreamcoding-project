@@ -9,7 +9,7 @@ export default function List() {
         <li>
           <div>
             <input type="checkbox" value="test" id="test" />
-            <label for="test">test</label>
+            <label htmlFor="test">test</label>
           </div>
           <button className={style.remove}>
             <MdDeleteForever />
@@ -18,7 +18,7 @@ export default function List() {
         <li>
           <div>
             <input type="checkbox" value="abc" id="abc" />
-            <label for="abc">abc</label>
+            <label htmlFor="abc">abc</label>
           </div>
           <button className={style.remove}>
             <MdDeleteForever />
@@ -27,7 +27,7 @@ export default function List() {
         <li>
           <div>
             <input type="checkbox" value="def" id="def" />
-            <label for="def">def</label>
+            <label htmlFor="def">def</label>
           </div>
           <button className={style.remove}>
             <MdDeleteForever />

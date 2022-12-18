@@ -2,6 +2,7 @@ import Add from "./components/Add";
 import Header from "./components/Header";
 import List from "./components/List";
 import style from "./App.module.css";
+import { useState } from "react";
 
 const dummy = [
   {
@@ -32,11 +33,24 @@ const dummy = [
 ];
 
 function App() {
+  const [todoList, setTodoList] = useState(dummy);
+  let id = -1;
+
+  const onAddTodoListHandler = (item) => {
+    const newTodo = {
+      id: ++id,
+      todo: item,
+      status: "todo",
+    };
+    setTodoList((todoList) => [...todoList, newTodo]);
+    console.log(item, newTodo);
+  };
+
   return (
     <div className={style.App}>
       <Header />
-      <List />
-      <Add />
+      <List todoList={todoList} />
+      <Add onAdd={onAddTodoListHandler} />
     </div>
   );
 }

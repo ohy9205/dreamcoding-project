@@ -1,11 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./Add.module.css";
 
-export default function Add() {
+export default function Add({ onAdd }) {
+  const [text, setText] = useState("");
+
+  const onChangeTextHandler = (e) => {
+    setText(e.target.value);
+  };
+
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    onAdd(text);
+  };
+
   return (
-    <footer>
+    <footer onSubmit={onSubmitHandler}>
       <form className={style.form}>
-        <input className={style.text} type="text" placeholder="Add Todo" />
+        <input
+          className={style.text}
+          type="text"
+          placeholder="Add Todo"
+          onChange={onChangeTextHandler}
+        />
         <button className={style.btn} type="submit">
           Add
         </button>

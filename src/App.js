@@ -12,22 +12,22 @@ const dummy = [
   },
   {
     id: 2,
-    todo: "밥먹기",
+    todo: "집가기",
     status: "todo",
   },
   {
     id: 3,
-    todo: "밥먹기",
+    todo: "자기",
     status: "active",
   },
   {
     id: 4,
-    todo: "밥먹기",
+    todo: "공부하기",
     status: "active",
   },
   {
     id: 5,
-    todo: "밥먹기",
+    todo: "강의보기",
     status: "done",
   },
 ];

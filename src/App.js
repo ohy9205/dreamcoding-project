@@ -2,7 +2,7 @@ import Add from "./components/Add";
 import Header from "./components/Header";
 import List from "./components/List";
 import style from "./App.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const dummy = [
   {
@@ -29,16 +29,38 @@ const dummy = [
 
 function App() {
   const [todoList, setTodoList] = useState(dummy);
+  const [filterList, setFilterList] = useState(todoList);
+  const [filter, setFilter] = useState("all");
   let id = -1;
+
+  useEffect(() => {
+    if (filter === "all") {
+      setFilterList(todoList);
+      return;
+    }
+
+    onFilter();
+  }, [todoList, filter]);
+
+  useEffect(() => {
+    console.log(filterList);
+  }, [filterList]);
+
+  const onFilter = () => {
+    setFilterList(todoList.filter((todo) => todo.status === filter));
+  };
+
+  const onChangeFilter = (filter) => {
+    setFilter(filter);
+  };
 
   const onAddTodoListHandler = (item) => {
     const newTodo = {
       id: ++id,
       todo: item,
-      status: "todo",
+      status: "active",
     };
     setTodoList((todoList) => [...todoList, newTodo]);
-    console.log(item, newTodo);
   };
 
   const onRemoveHandler = (targetId) => {
@@ -49,23 +71,24 @@ function App() {
     });
   };
 
-  const onChangeStatusHandler = (targetId) => {
-    setTodoList((todoList) => {
-      return todoList.map(
-        (todo) =>
-          todo.id === targetId && {
-            ...todo,
-            status: "active" ? "completed" : "active",
-          }
-      );
+  const onChangeStatusHandler = (targetId, status) => {
+    // status를 completed로 바꿔야하는데
+
+    const newTodoList = todoList.map((todo) => {
+      if (parseInt(todo.id) === parseInt(targetId)) {
+        todo.status = status === "completed" ? "completed" : "active";
+      }
+      return { ...todo };
     });
+
+    setTodoList(newTodoList);
   };
 
   return (
     <div className={style.App}>
-      <Header />
+      <Header filter={filter} onChange={onChangeFilter} />
       <List
-        todoList={todoList}
+        todoList={filterList}
         onChangeStatus={onChangeStatusHandler}
         onRemove={onRemoveHandler}
       />

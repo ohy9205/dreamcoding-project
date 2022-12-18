@@ -1,0 +1,31 @@
+footer {
+  height: 65px;
+  background-color: aliceblue;
+  border-radius: inherit;
+  /* display: flex; */
+}
+
+.form {
+  padding: 17.5px 10px;
+}
+
+.text {
+  width: 75%;
+  height: 30px;
+  font-size: 16px;
+  padding: 0 5px;
+  border: none;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.btn {
+  width: 25%;
+  height: 30px;
+  background-color: rgb(244, 100, 48);
+  border: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: #fff;
+  font-size: 15px;
+}

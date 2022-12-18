@@ -1,6 +1,7 @@
 header {
   display: flex;
   justify-content: space-between;
+  height: 65px;
   padding: 20px 10px;
   border-radius: inherit;
   background-color: aliceblue;

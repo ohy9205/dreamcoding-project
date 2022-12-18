@@ -1,21 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./List.module.css";
-import { MdDeleteForever } from "react-icons/md";
+import Todo from "./Todo";
 
-export default function List({ todoList = [] }) {
+export default function List({ todoList = [], onRemove, onChangeStatus }) {
   return (
     <main>
       <ul>
         {todoList.map((todo) => (
-          <li key={todo.id}>
-            <div>
-              <input type="checkbox" value={todo.todo} id={todo.id} />
-              <label htmlFor={todo.id}>{todo.todo}</label>
-            </div>
-            <button className={style.remove}>
-              <MdDeleteForever />
-            </button>
-          </li>
+          <Todo
+            key={todo.id}
+            todo={todo}
+            onRemove={onRemove}
+            onChangeStatus={onChangeStatus}
+          />
         ))}
       </ul>
     </main>

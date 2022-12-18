@@ -5,13 +5,17 @@ export default function List() {
     <main>
       <ul>
         <li>
-          test <button>완</button>
+          <input type="checkbox" value="test" />
+          test
+          <button>삭제</button>
         </li>
         <li>
-          abc <button>완</button>
+          <input type="checkbox" value="abc" />
+          abc <button>삭제</button>
         </li>
         <li>
-          def <button>완</button>
+          <input type="checkbox" value="tdef" />
+          def <button>삭제</button>
         </li>
       </ul>
     </main>

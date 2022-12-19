@@ -36,9 +36,11 @@ export default function Todo({ todo, onRemove, onUpdate }) {
         checked={status === "completed"}
       />
       {status === "active" ? activeTodo : completedTodo}
-      <button onClick={onRemoveHandler}>
-        <MdDeleteForever className={style.svg} />
-      </button>
+      <sapn className={style.span}>
+        <button onClick={onRemoveHandler} className={style.button}>
+          <MdDeleteForever />
+        </button>
+      </sapn>
     </li>
   );
 }

@@ -1,7 +1,7 @@
 import Header from "./components/Header";
 import List from "./components/List";
-import style from "./App.module.css";
 import { useState } from "react";
+import { DarkModeProvider } from "./context/DarkModeContext";
 
 const filters = ["all", "active", "completed"];
 function App() {
@@ -12,10 +12,10 @@ function App() {
   };
 
   return (
-    <div className={style.App}>
+    <DarkModeProvider>
       <Header filters={filters} filter={filter} onChange={onChangeFilter} />
       <List filter={filter} />
-    </div>
+    </DarkModeProvider>
   );
 }
 

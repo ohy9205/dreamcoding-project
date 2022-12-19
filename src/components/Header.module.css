@@ -1,41 +1,53 @@
-header {
+.header {
   display: flex;
   justify-content: space-between;
-  height: 65px;
-  padding: 20px 10px;
-  border-radius: inherit;
-  background-color: aliceblue;
-}
-.mode {
-  border: none;
-  background-color: transparent;
+  align-items: center;
+  background-color: var(--color-bg-dark);
+  border-bottom: 1px solid var(--color-grey);
+  padding: 0 1rem;
 }
 
-.mode path {
-  color: rgb(244, 100, 48);
+.mode {
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--color-text);
+  background-color: transparent;
+  transition: all 150ms ease-out;
 }
 
 .mode:hover {
   transform: scale(1.2);
+  color: var(--color-accent);
 }
 
-.filter {
+.filters {
   display: flex;
 }
 
-.filter li {
-  margin: 0 5px;
-  font-weight: 900;
-  color: rgb(244, 100, 48);
+.filter {
+  font-size: 1.2rem;
+  margin: 0.3rem;
+  text-transform: capitalize;
+  background-color: transparent;
+  color: var(--color-accent);
+  opacity: 0.8;
+  font-weight: bold;
+}
+
+.filter:hover,
+.filter.selected {
+  opacity: 1;
+}
+
+.filter.selected::after {
+  content: "";
+  display: block;
+  margin-top: 0.1rem;
+  border: 1px solid var(--color-grey);
+  background-color: var(--color-grey);
 }
 
 .button {
   border: none;
   background-color: transparent;
-  color: rgb(244, 100, 48);
-  font-size: 15px;
-}
-
-.on {
-  border-bottom: 2px solid rgb(170, 184, 197);
 }

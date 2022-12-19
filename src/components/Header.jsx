@@ -1,32 +1,30 @@
 import React from "react";
 import style from "./Header.module.css";
-import { BsFillSunFill } from "react-icons/bs";
+import { HiMoon, HiSun } from "react-icons/hi";
+import { useDarkMode } from "../context/DarkModeContext";
 
 export default function Header({ filters, filter, onChange }) {
+  const { darkMode, toggleModeHandler } = useDarkMode();
+
   return (
-    <header>
-      <button className={style.mode}>
-        <BsFillSunFill />
+    <header className={style.header}>
+      <button className={style.mode} onClick={toggleModeHandler}>
+        {darkMode ? <HiMoon /> : <HiSun />}
       </button>
-      <ul className={style.filter}>
+      <ul className={style.filters}>
         {filters.map((value, index) => (
           <li key={index}>
             <button
+              className={`${style.filter} ${
+                filter === value && style.selected
+              }`}
               onClick={() => onChange(value)}
-              className={`${style.button} ${value === filter ? style.on : ""}`}>
+              // className={`${style.button} ${value === filter ? style.on : ""}`}
+            >
               {value}
             </button>
           </li>
         ))}
-        {/* <li onClick={onChangeFilter} id="all">
-          All
-        </li>
-        <li onClick={onChangeFilter} id="active">
-          Active
-        </li>
-        <li onClick={onChangeFilter} id="completed">
-          Completed
-        </li> */}
       </ul>
     </header>
   );

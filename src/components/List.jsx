@@ -55,8 +55,8 @@ export default function List({ filter }) {
 
   return (
     <>
-      <main>
-        <ul>
+      <main className={style.container}>
+        <ul className={style.list}>
           {filteredList.map((todo) => (
             <Todo
               key={todo.id}

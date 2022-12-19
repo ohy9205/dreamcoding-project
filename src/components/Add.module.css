@@ -1,32 +1,31 @@
-footer {
-  height: 65px;
-  background-color: aliceblue;
-  border-bottom-left-radius: 10%;
-  border-bottom-right-radius: 10%;
-  /* display: flex; */
-}
-
 .form {
-  padding: 17.5px 10px;
+  width: 100%;
+  display: flex;
+  padding: 1rem 1rem;
+  background-color: var(--color-bg-dark);
 }
 
 .text {
-  width: 75%;
-  height: 30px;
-  font-size: 16px;
-  padding: 0 5px;
+  flex: 1 1 auto;
+  font-size: 1rem;
+  padding: 0.7rem 1rem;
   border: none;
+  outline: none;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 
 .btn {
-  width: 25%;
-  height: 30px;
-  background-color: rgb(244, 100, 48);
-  border: none;
+  cursor: pointer;
+  background-color: var(--color-accent);
+  font-size: 1rem;
+  color: #fff;
+  font-weight: bold;
+  padding: 0 0.5rem;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  color: #fff;
-  font-size: 15px;
+}
+
+.btn:hover {
+  filter: brightness(125%);
 }

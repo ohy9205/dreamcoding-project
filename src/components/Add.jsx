@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { DarkModeContext } from "../context/DarkModeContext";
 import style from "./Add.module.css";
 
 export default function Add({ onAdd }) {
   const [text, setText] = useState("");
+  const { darkMode, toggleMode } = useContext(DarkModeContext);
 
   const onChangeTextHandler = (e) => {
     setText(e.target.value);
@@ -15,7 +17,9 @@ export default function Add({ onAdd }) {
   };
 
   return (
-    <footer onSubmit={onSubmitHandler}>
+    <footer
+      onSubmit={onSubmitHandler}
+      className={darkMode ? style.dark_mode : ""}>
       <form className={style.form}>
         <input
           className={style.text}

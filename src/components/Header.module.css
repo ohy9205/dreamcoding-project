@@ -3,7 +3,8 @@ header {
   justify-content: space-between;
   height: 65px;
   padding: 20px 10px;
-  border-radius: inherit;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
   background-color: aliceblue;
 }
 .mode {
@@ -31,4 +32,8 @@ header {
 
 .filter li.on {
   border-bottom: 2px solid rgb(170, 184, 197);
+}
+
+.dark_mode {
+  background-color: rgb(0, 0, 65);
 }

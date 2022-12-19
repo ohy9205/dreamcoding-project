@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import List from "./components/List";
 import style from "./App.module.css";
 import { useEffect, useState } from "react";
+import { DarkModeProvider } from "./context/DarkModeContext";
 
 const dummy = [
   {
@@ -85,15 +86,17 @@ function App() {
   };
 
   return (
-    <div className={style.App}>
-      <Header filter={filter} onChange={onChangeFilter} />
-      <List
-        todoList={filterList}
-        onChangeStatus={onChangeStatusHandler}
-        onRemove={onRemoveHandler}
-      />
-      <Add onAdd={onAddTodoListHandler} />
-    </div>
+    <DarkModeProvider>
+      <div className={`${style.App}`}>
+        <Header filter={filter} onChange={onChangeFilter} />
+        <List
+          todoList={filterList}
+          onChangeStatus={onChangeStatusHandler}
+          onRemove={onRemoveHandler}
+        />
+        <Add onAdd={onAddTodoListHandler} />
+      </div>
+    </DarkModeProvider>
   );
 }
 

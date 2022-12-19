@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import style from "./Add.module.css";
+import { v4 } from "uuid";
 
 export default function Add({ onAdd }) {
   const [text, setText] = useState("");
@@ -10,7 +11,10 @@ export default function Add({ onAdd }) {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    onAdd(text);
+    if (text.trim().length < 0) {
+      return;
+    }
+    onAdd({ id: v4(), text: text, status: "active" });
     setText("");
   };
 

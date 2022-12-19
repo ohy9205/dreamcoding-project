@@ -29,6 +29,13 @@ header {
   color: rgb(244, 100, 48);
 }
 
-.filter li.on {
+.button {
+  border: none;
+  background-color: transparent;
+  color: rgb(244, 100, 48);
+  font-size: 15px;
+}
+
+.on {
   border-bottom: 2px solid rgb(170, 184, 197);
 }

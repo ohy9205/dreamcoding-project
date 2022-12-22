@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { logout, login, onUserStateChange } from "../api/firebase";
 import { useEffect } from "react";
 import User from "./User";
+import Button from "./ui/Button";
 
 export default function Header() {
   const [user, setUser] = useState();
@@ -27,7 +28,7 @@ export default function Header() {
           </li>
         )}
         {user && (
-          <li>
+          <li className="shrink-0">
             <User user={user} />
           </li>
         )}
@@ -48,9 +49,9 @@ export default function Header() {
           </li>
           {user && showLogin()}
           {user ? (
-            <button onClick={logout}>Logout</button>
+            <Button text="Logout" onClick={logout} />
           ) : (
-            <button onClick={login}>Login</button>
+            <Button text="Login" onClick={login} />
           )}
         </ul>
       </nav>

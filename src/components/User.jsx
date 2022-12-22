@@ -3,6 +3,7 @@ import React from "react";
 export default function User({ user: { photoURL, displayName } }) {
   return (
     <div className="flex items-center">
+      {/* shrink-0 : 창이 좁아졌을 때 박스가 찌그러지는 현상을 방지 */}
       <img
         src={photoURL}
         alt={displayName}

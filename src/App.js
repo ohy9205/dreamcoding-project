@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
+import Header from "./components/Header";
 function App() {
   return (
     <div className="App">
-      {/* 헤더 */}
+      <Header />
       <Outlet />
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { FiShoppingBag } from "react-icons/fi";
-import { BsFillPencilFill, BsPencilFill } from "react-icons/bs";
+import { BsPencilFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 export default function Header() {
@@ -13,18 +13,18 @@ export default function Header() {
       <nav className="w-1/4">
         <ul className="flex items-center h-full justify-between text-xl font-semibold">
           <li>
-            <Link to="/products">Products</Link>{" "}
+            <Link to="/products">Products</Link>
           </li>
           <li>
-            <Link to="/carts">Carts</Link>{" "}
+            <Link to="/carts">Carts</Link>
           </li>
           <li>
             <Link to="/products/new">
               <BsPencilFill />
-            </Link>{" "}
+            </Link>
           </li>
           <li>
-            <Link to={`/products/${"fsd"}`}>Login</Link>{" "}
+            <Link to={`/products/${"fsd"}`}>Login</Link>
           </li>
         </ul>
       </nav>

@@ -19,11 +19,13 @@ export default function Header() {
         <li>
           <Link to="/carts">Carts</Link>
         </li>
-        <li>
-          <Link to="/products/new" className="text-2xl">
-            <BsPencilFill />
-          </Link>
-        </li>
+        {user && user.isAdmin && (
+          <li>
+            <Link to="/products/new" className="text-3xl">
+              <BsPencilFill />
+            </Link>
+          </li>
+        )}
         {user && (
           <li>
             <User user={user} />
@@ -46,9 +48,9 @@ export default function Header() {
           </li>
           {user && showLogin()}
           {user ? (
-            <li onClick={logout}>Logout</li>
+            <button onClick={logout}>Logout</button>
           ) : (
-            <li onClick={login}>Login</li>
+            <button onClick={login}>Login</button>
           )}
         </ul>
       </nav>

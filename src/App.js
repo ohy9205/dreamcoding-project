@@ -5,13 +5,9 @@ import Header from "./components/Header";
 import { auth } from "./api/firebase";
 
 function App() {
-  const [userInfo, setUserInfo] = useState(null);
-  const [isLogin, setIsLogin] = useState(null);
-
-  // console.log(auth.currentUser);
   return (
     <>
-      <Header userInfo={userInfo} />
+      <Header />
       <Outlet />
     </>
   );

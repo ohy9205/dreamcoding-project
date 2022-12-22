@@ -4,6 +4,7 @@ import { BsPencilFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { logout, login, onUserStateChange } from "../api/firebase";
 import { useEffect } from "react";
+import User from "./User";
 
 export default function Header() {
   const [user, setUser] = useState();
@@ -11,6 +12,26 @@ export default function Header() {
   useEffect(() => {
     onUserStateChange((user) => setUser(user));
   }, []);
+
+  const showLogin = () => {
+    return (
+      <>
+        <li>
+          <Link to="/carts">Carts</Link>
+        </li>
+        <li>
+          <Link to="/products/new" className="text-2xl">
+            <BsPencilFill />
+          </Link>
+        </li>
+        {user && (
+          <li>
+            <User user={user} />
+          </li>
+        )}
+      </>
+    );
+  };
 
   return (
     <header className="w-full p-4 border-b border-zinc-200 flex justify-between ">
@@ -23,26 +44,12 @@ export default function Header() {
           <li>
             <Link to="/products">Products</Link>
           </li>
-          <li>
-            <Link to="/carts">Carts</Link>
-          </li>
-          {user && (
-            <li className="flex items-center">
-              <img
-                src={user.photoURL}
-                alt={user.displayName}
-                className="border-radius-%"
-              />
-              <h3>{user.displayName}</h3>
-            </li>
+          {user && showLogin()}
+          {user ? (
+            <li onClick={logout}>Logout</li>
+          ) : (
+            <li onClick={login}>Login</li>
           )}
-          <li>
-            <Link to="/products/new" className="text-2xl">
-              <BsPencilFill />
-            </Link>
-          </li>
-          {user && <li onClick={logout}>Logout</li>}
-          {!user && <li onClick={login}>Login</li>}
         </ul>
       </nav>
     </header>

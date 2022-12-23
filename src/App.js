@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
-import { AuthProvider } from "./context/AuthContext";
+import { AuthProvider } from "./store/AuthContext";
 
 function App() {
   return (

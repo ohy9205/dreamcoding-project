@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { useAuthContext } from "../context/AuthContext";
+import { useAuthContext } from "../store/AuthContext";
 
 export default function ProtectedRoute({ children, requireAdmin }) {
   const { user } = useAuthContext();
@@ -9,7 +9,6 @@ export default function ProtectedRoute({ children, requireAdmin }) {
 
   useEffect(() => {
     if (!user || (requireAdmin && !user.isAdmin)) {
-      console.log(user);
       // navigate("/");
       navigate("/", { replace: true });
       // return <Navigate to="/" replace={true} />;

@@ -4,7 +4,7 @@ import { BsPencilFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import User from "./User";
 import Button from "./ui/Button";
-import { useAuthContext } from "../context/AuthContext";
+import { useAuthContext } from "../store/AuthContext";
 
 export default function Header() {
   const { user, login, logout } = useAuthContext();

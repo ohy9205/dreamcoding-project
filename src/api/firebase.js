@@ -6,7 +6,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { getDatabase, ref, onValue, get, child } from "firebase/database";
+import { getDatabase, ref, set, get, child } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -39,6 +39,7 @@ export function onUserStateChange(callback) {
   });
 }
 
+// user데이터 읽기 (promise를 반환하므로 async붙여야함)
 async function adminUser(user) {
   const dbRef = ref(database);
   return get(child(dbRef, "admins")) //
@@ -50,4 +51,16 @@ async function adminUser(user) {
       }
       return user;
     });
+}
+
+// products 추가
+export async function addNewProduct(product, imageUrl) {
+  const id = Date.now();
+  return set(ref(database, "products/" + id), {
+    ...product,
+    id: id,
+    price: parseInt(product.price),
+    image: imageUrl,
+    options: product.options.trim().split(","),
+  });
 }

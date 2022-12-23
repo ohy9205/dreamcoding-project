@@ -1,5 +1,4 @@
 import { configureStore, createAction, createReducer } from "@reduxjs/toolkit";
-import { writeProduct } from "../api/firebase";
 
 /* redux=toolkit 사용 */
 export const addProduct = createAction("ADD");

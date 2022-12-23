@@ -50,7 +50,7 @@ export default function NewProduct() {
   return (
     <section className="w-full text-center ">
       <h1 className="text-2xl font-bold my-4">새로운 제품 등록</h1>
-      {true ? <h3 className="text-xl my-4">🎉등록성공{success}</h3> : ""}
+      {success ? <h3 className="text-xl my-4">{success}</h3> : ""}
       {file && (
         <img
           className="m-auto h-96 mb-2"

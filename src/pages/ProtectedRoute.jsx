@@ -1,6 +1,5 @@
-import React from "react";
 import { useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../store/AuthContext";
 
 export default function ProtectedRoute({ children, requireAdmin }) {
@@ -13,7 +12,7 @@ export default function ProtectedRoute({ children, requireAdmin }) {
       navigate("/", { replace: true });
       // return <Navigate to="/" replace={true} />;
     }
-  }, [user]);
+  }, [user, requireAdmin, navigate]);
 
   return children;
   // 로그인한 사용자가 있는지 확인하고

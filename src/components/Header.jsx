@@ -1,18 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import { FiShoppingBag } from "react-icons/fi";
 import { BsPencilFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { logout, login, onUserStateChange } from "../api/firebase";
-import { useEffect } from "react";
 import User from "./User";
 import Button from "./ui/Button";
+import { useAuthContext } from "../context/AuthContext";
 
 export default function Header() {
-  const [user, setUser] = useState();
-
-  useEffect(() => {
-    onUserStateChange((user) => setUser(user));
-  }, []);
+  const { user, login, logout } = useAuthContext();
 
   const showLogin = () => {
     return (

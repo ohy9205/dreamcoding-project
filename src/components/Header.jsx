@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import User from "./User";
 import Button from "./ui/Button";
 import { useAuthContext } from "../store/AuthContext";
+import CartStatus from "./CartStatus";
 
 export default function Header() {
   const { user, login, logout } = useAuthContext();
@@ -13,7 +14,9 @@ export default function Header() {
     return (
       <>
         <li>
-          <Link to="/carts">Carts</Link>
+          <Link to="/carts">
+            <CartStatus />
+          </Link>
         </li>
         {user && user.isAdmin && (
           <li>

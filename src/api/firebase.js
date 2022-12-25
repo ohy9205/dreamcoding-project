@@ -6,7 +6,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { getDatabase, ref, set, get, child } from "firebase/database";
+import { getDatabase, ref, set, get, child, remove } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -71,18 +71,33 @@ export async function getProducts() {
   return get(child(dbRef, "products")) //
     .then((snapshot) => {
       if (snapshot.exists()) {
-        // console.log(Object.values(snapshot.val()));
         return Object.values(snapshot.val());
       }
     });
 }
 
-// 특정 아이템만 가져오기
-export async function getDetail(id) {
+// cart 정보 가져오기
+export async function getCart(userId) {
   const dbRef = ref(database);
-  return get(child(dbRef, `products/${id}`)).then((snapshot) => {
-    if (snapshot.exists()) {
-      return snapshot.val();
-    }
-  });
+  return get(child(dbRef, `carts/${userId}`)) //
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        return Object.values(snapshot.val());
+      } else {
+        return {};
+      }
+    });
+}
+
+// cart 추가하기
+export function addOrUpdateToCart(userId, product) {
+  const id = Date.now();
+  // return set(ref(database, `carts/${userId}/${product.id}`), product);
+  set(ref(database, `carts/${userId}/${product.id}`), product);
+  //product 정보: 제품id, 가격, 수량 등
+}
+
+// cart 삭제
+export async function removeFromCart(userId, productId) {
+  return remove(ref(database, `carts/${userId}/${productId}`));
 }

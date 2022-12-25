@@ -1,11 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import { getDetail } from "../api/firebase";
+import { addOrUpdateToCart } from "../api/firebase";
 import Button from "../components/ui/Button";
+import { useAuthContext } from "../store/AuthContext";
 
 export default function ProductDetail() {
-  // 쿼리에서 정보 꺼내오기~
+  const {
+    user: { uid },
+  } = useAuthContext();
+
   const {
     state: {
       product,
@@ -20,14 +24,18 @@ export default function ProductDetail() {
   };
 
   const handleClick = (e) => {
-    console.log("장바구니 추가");
+    // 장바구니에 추가할 데이터
+    const product = { id, image, name, price, option: selected, quantity: 1 };
+
+    // 장바구니 추가
+    addOrUpdateToCart(uid, product);
   };
 
   if (!product) return <section>Loading...</section>;
 
   return (
     <>
-      <p className="ml-4 mb-2 font-semibold"> > {category}</p>
+      <p className="m-2 font-semibold"> {category}</p>
       <section className="flex flex-col md:flex-row p-4">
         <img src={image} alt={name} className="md:w-2/4 basis-7/12 " />
         <div className="w-full basis=5/12 flex-col p-4">

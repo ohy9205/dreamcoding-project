@@ -1,5 +1,4 @@
 import React from "react";
-import { useAuthContext } from "../store/AuthContext";
 import CartItem from "../components/CartItem";
 import PriceCard from "../components/PriceCard";
 import { BsFillPlusCircleFill } from "react-icons/bs";

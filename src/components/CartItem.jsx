@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 import { RiDeleteBin5Fill } from "react-icons/ri";
-import { addOrUpdateToCart, removeFromCart } from "../api/firebase";
+import useCarts from "../hooks/useCarts";
 
 const ICON_CLASS =
   "transition-all cursor-pointer hover:text-sky-500 hover:scale-105 mx-1";
@@ -9,17 +9,20 @@ const ICON_CLASS =
 export default function CartItem({
   product,
   product: { id, image, name, option, quantity, price },
-  uid,
 }) {
+  const { addCarts, removeCarts } = useCarts();
+
   const handleMinus = () => {
     if (quantity < 2) return; //수량이 1개 이하일때는 더이상 마이너스 못함
-    addOrUpdateToCart(uid, { ...product, quantity: quantity - 1 });
+    addCarts.mutate({ ...product, quantity: quantity - 1 });
   };
   const handlePlus = () => {
-    addOrUpdateToCart(uid, { ...product, quantity: quantity + 1 });
+    addCarts.mutate({ ...product, quantity: quantity + 1 });
   };
   const handleDelete = () => {
-    removeFromCart(uid, id);
+    removeCarts.mutate(id, {
+      onSuccess: console.log("성공"),
+    });
   };
 
   return (

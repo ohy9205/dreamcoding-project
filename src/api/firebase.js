@@ -91,8 +91,6 @@ export async function getCart(userId) {
 
 // cart 추가하기
 export function addOrUpdateToCart(userId, product) {
-  const id = Date.now();
-  // return set(ref(database, `carts/${userId}/${product.id}`), product);
   set(ref(database, `carts/${userId}/${product.id}`), product);
   //product 정보: 제품id, 가격, 수량 등
 }

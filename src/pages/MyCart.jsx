@@ -1,27 +1,24 @@
 import React from "react";
-import { getCart } from "../api/firebase";
 import { useAuthContext } from "../store/AuthContext";
-import { useQuery } from "@tanstack/react-query";
 import CartItem from "../components/CartItem";
 import PriceCard from "../components/PriceCard";
 import { BsFillPlusCircleFill } from "react-icons/bs";
 import { FaEquals } from "react-icons/fa";
 import Button from "../components/ui/Button";
+import useCarts from "../hooks/useCarts";
 
 const SHIPPING = 3000;
 export default function MyCart() {
-  //장바구니 추가
   const {
-    user: { uid },
-  } = useAuthContext();
-  const { isLoading, data: products } = useQuery(["carts"], () => getCart(uid));
+    cartsQuery: { isLoading, data: products },
+  } = useCarts();
 
   if (isLoading) return <p>Loading...</p>;
 
   // 쇼핑카트에 아이템이 하나 이상 있는지 확인
   const hasProducts = products && products.length > 0;
   const totalPrice =
-    products &&
+    products.length > 0 &&
     products.reduce(
       (prev, cur) => prev + parseInt(cur.price) * parseInt(cur.quantity),
       0
@@ -36,7 +33,7 @@ export default function MyCart() {
         <ul className="border-b border-gray-300 mb-8 p-4 px-8">
           {products &&
             products.map((product) => (
-              <CartItem key={product.id} uid={uid} product={product} />
+              <CartItem key={product.id} product={product} />
             ))}
         </ul>
       )}

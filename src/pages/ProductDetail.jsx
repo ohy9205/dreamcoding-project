@@ -1,8 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { addOrUpdateToCart } from "../api/firebase";
 import Button from "../components/ui/Button";
+import useCarts from "../hooks/useCarts";
 import { useAuthContext } from "../store/AuthContext";
 
 export default function ProductDetail() {
@@ -17,6 +17,8 @@ export default function ProductDetail() {
     },
   } = useLocation();
 
+  const { addCarts } = useCarts();
+
   const [selected, setSelected] = useState(options && options[0]);
 
   const handleSelect = (e) => {
@@ -25,10 +27,17 @@ export default function ProductDetail() {
 
   const handleClick = (e) => {
     // 장바구니에 추가할 데이터
-    const product = { id, image, name, price, option: selected, quantity: 1 };
+    const product = {
+      id,
+      image,
+      name,
+      price,
+      option: selected,
+      quantity: 1,
+    };
 
     // 장바구니 추가
-    addOrUpdateToCart(uid, product);
+    addCarts.mutate(product);
   };
 
   if (!product) return <section>Loading...</section>;

@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ohy9205/youtube-clone.git/static/css/main.522161ac.css",
+    "main.js": "/ohy9205/youtube-clone.git/static/js/main.308e2521.js",
+    "index.html": "/ohy9205/youtube-clone.git/index.html",
+    "main.522161ac.css.map": "/ohy9205/youtube-clone.git/static/css/main.522161ac.css.map",
+    "main.308e2521.js.map": "/ohy9205/youtube-clone.git/static/js/main.308e2521.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.522161ac.css",
+    "static/js/main.308e2521.js"
+  ]
+}
